@@ -2,91 +2,209 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RefereeStats | Eredivisie</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1120;
-      color: #f1f5f9;
-    }
-    header {
-      padding: 28px 20px;
-      background: #111c30;
-      border-bottom: 1px solid #29364d;
-    }
-    .wrap { max-width: 900px; margin: auto; }
-    .logo { font-size: 28px; font-weight: bold; }
-    .logo span { color: #36d399; }
-    .tagline { color: #9eacc2; margin-top: 8px; }
-    main { padding: 28px 20px; }
-    .card {
-      background: #131f33;
-      border: 1px solid #29364d;
-      border-radius: 14px;
-      padding: 22px;
-      margin-bottom: 18px;
-    }
-    h2 { margin-top: 0; }
-    p { color: #bdc8d8; line-height: 1.6; }
-    a.button {
-      display: inline-block;
-      padding: 12px 16px;
-      background: #36d399;
-      color: #07150f;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 6px 6px 0 0;
-    }
-    a.secondary {
-      background: #26364d;
-      color: white;
-    }
-    .notice {
-      border-left: 4px solid #36d399;
-      padding-left: 14px;
-    }
-    footer {
-      text-align: center;
-      padding: 24px;
-      color: #8290a5;
-      font-size: 13px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RefereeStats | Eredivisie</title>
+<style>
+:root {
+  --bg: #080e1b;
+  --panel: #121e32;
+  --border: #2b3a52;
+  --green: #35d6a0;
+  --text: #f3f6fc;
+  --muted: #aab8cc;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  background: #111c30;
+  border-bottom: 1px solid var(--border);
+  padding: 22px;
+}
+.wrap { max-width: 1000px; margin: auto; }
+.logo { font-size: 29px; font-weight: 800; }
+.logo span { color: var(--green); }
+.tagline { color: var(--muted); margin-top: 7px; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 20px; }
+nav a { color: var(--text); text-decoration: none; }
+nav a:hover { color: var(--green); }
+main { padding: 26px 18px; }
+.hero {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(130deg, #172943, #111c30);
+  margin-bottom: 22px;
+}
+h1 { font-size: clamp(25px, 4vw, 36px); margin: 0 0 12px; }
+h2 { font-size: 21px; margin-top: 0; }
+p { color: var(--muted); line-height: 1.6; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #06150f;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn.secondary { background: #293951; color: white; }
+.search {
+  width: 100%;
+  background: #091323;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 13px;
+  color: white;
+  font-size: 16px;
+  margin: 8px 0 16px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.match {
+  background: #0c1729;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 17px;
+}
+.match h3 { margin: 0 0 10px; font-size: 17px; }
+.status {
+  display: inline-block;
+  color: var(--green);
+  border: 1px solid #28775f;
+  border-radius: 20px;
+  padding: 5px 9px;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.small { font-size: 13px; }
+footer {
+  text-align: center;
+  color: #8290a5;
+  padding: 24px;
+  border-top: 1px solid var(--border);
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="logo">Referee<span>Stats</span></div>
-      <div class="tagline">Scheidsrechters • Eredivisie • Wedstrijden</div>
+<header>
+  <div class="wrap">
+    <div class="logo">Referee<span>Stats</span></div>
+    <div class="tagline">Scheidsrechters · Eredivisie · Wedstrijden</div>
+    <nav>
+      <a href="#wedstrijden">Wedstrijden</a>
+      <a href="#aanstellingen">Aanstellingen</a>
+      <a href="#bronnen">Officiële bronnen</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Alles over de arbitrage ⚽</h1>
+    <p>
+      Volg Eredivisie-wedstrijden en zoek officiële informatie
+      over de scheidsrechteraanstellingen.
+    </p>
+    <div class="actions">
+      <a class="btn" href="https://www.knvb.nl/knvb_node/categorie/scheidsrechters/aanstellingen" target="_blank" rel="noopener noreferrer">KNVB-aanstellingen</a>
+      <a class="btn secondary" href="https://eredivisie.nl/" target="_blank" rel="noopener noreferrer">Eredivisie.nl</a>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap">
-    <section class="card">
-      <h2>Welkom bij RefereeStats ⚽</h2>
-      <p>Volg de officiële scheidsrechteraanstellingen voor wedstrijden in de Eredivisie.</p>
-      <a class="button" href="https://www.knvb.nl/" target="_blank" rel="noopener">Officiële KNVB-website</a>
-      <a class="button secondary" href="https://eredivisie.nl/" target="_blank" rel="noopener">Eredivisie.nl</a>
-    </section>
+  <section class="panel" id="wedstrijden">
+    <h2>Wedstrijdenoverzicht</h2>
+    <p>
+      Zoek wedstrijden in de officiële competitie-informatie.
+      De website haalt op dit moment nog geen wedstrijdgegevens automatisch op.
+    </p>
+    <input id="zoek" class="search" type="search"
+      placeholder="Zoek op club of wedstrijd..."
+      aria-label="Zoek in het wedstrijdenoverzicht">
+    <div class="cards" id="kaarten">
+      <article class="match">
+        <span class="status">Officiële bron</span>
+        <h3>Programma Eredivisie</h3>
+        <p>Bekijk speeldata en wedstrijden via de competitiebron.</p>
+        <a class="btn" href="https://eredivisie.nl/" target="_blank" rel="noopener noreferrer">Bekijk programma</a>
+      </article>
+      <article class="match">
+        <span class="status">Officiële bron</span>
+        <h3>Uitslagen Eredivisie</h3>
+        <p>Bekijk de officiële competitie-informatie en uitslagen.</p>
+        <a class="btn secondary" href="https://eredivisie.nl/" target="_blank" rel="noopener noreferrer">Bekijk uitslagen</a>
+      </article>
+      <article class="match">
+        <span class="status">Officiële bron</span>
+        <h3>KNVB-aanstellingen</h3>
+        <p>Controleer welke scheidsrechters officieel zijn aangesteld.</p>
+        <a class="btn secondary" href="https://www.knvb.nl/knvb_node/categorie/scheidsrechters/aanstellingen" target="_blank" rel="noopener noreferrer">Bekijk aanstellingen</a>
+      </article>
+    </div>
+    <p id="geenResultaat" hidden>Geen resultaten. Probeer een andere zoekterm.</p>
+  </section>
 
-    <section class="card">
-      <h2>Officiële aanstellingen</h2>
-      <p class="notice">Bekijk de actuele aanstellingen via de officiële bronnen. RefereeStats toont hier nog geen automatisch ingelezen wedstrijdgegevens.</p>
-      <a class="button" href="https://www.knvb.nl/" target="_blank" rel="noopener">Bekijk KNVB</a>
-    </section>
+  <section class="panel" id="aanstellingen">
+    <h2>Scheidsrechteraanstellingen</h2>
+    <p>
+      <strong>Geen onbevestigde namen.</strong>
+      Een scheidsrechter wordt pas bij een wedstrijd getoond
+      wanneer de aanstelling betrouwbaar is bevestigd.
+    </p>
+    <div class="actions">
+      <a class="btn" href="https://www.knvb.nl/knvb_node/categorie/scheidsrechters/aanstellingen" target="_blank" rel="noopener noreferrer">Controleer bij de KNVB</a>
+    </div>
+    <p class="small">Laatst gecontroleerd: niet automatisch bijgewerkt.</p>
+  </section>
 
-    <section class="card">
-      <h2>Over RefereeStats</h2>
-      <p>Een onafhankelijk project voor voetbalfans die scheidsrechters en wedstrijden willen volgen.</p>
-      <p>Respect • Veiligheid • Gelijkwaardigheid</p>
-    </section>
-  </main>
+  <section class="panel" id="bronnen">
+    <h2>Bronnen en betrouwbaarheid</h2>
+    <p>RefereeStats is een onafhankelijk project en geen officiële KNVB-website.</p>
+    <p>Gebruik de officiële bronnen om wijzigingen, afgelastingen en nieuwe aanstellingen te controleren.</p>
+    <div class="actions">
+      <a class="btn secondary" href="https://www.knvb.nl/" target="_blank" rel="noopener noreferrer">KNVB</a>
+      <a class="btn secondary" href="https://eredivisie.nl/" target="_blank" rel="noopener noreferrer">Eredivisie</a>
+    </div>
+  </section>
+</main>
 
-  <footer>RefereeStats · Onafhankelijk fanproject · Gebruik officiële bronnen voor actuele informatie.</footer>
+<footer>
+  RefereeStats · Onafhankelijk fanproject · Officiële bronnen voor bevestigde informatie
+</footer>
+
+<script>
+const zoekveld = document.getElementById("zoek");
+const kaarten = [...document.querySelectorAll("#kaarten .match")];
+const geenResultaat = document.getElementById("geenResultaat");
+
+zoekveld.addEventListener("input", () => {
+  const zoekterm = zoekveld.value.toLocaleLowerCase("nl").trim();
+  let zichtbaar = 0;
+
+  kaarten.forEach(kaart => {
+    const match = kaart.innerText.toLocaleLowerCase("nl").includes(zoekterm);
+    kaart.hidden = !match;
+    if (match) zichtbaar++;
+  });
+
+  geenResultaat.hidden = zichtbaar !== 0;
+});
+</script>
 </body>
 </html>
